@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurnal & Target Olahraga Saya</title>
+</head>
+<body>
+    <header>
+        <h1>Profil & Target Olahraga Aldo Alvero Pratama</h1>
+        <p>NIM: 25523229 | Jurnal Aktivitas dan Target Olahraga Mingguan</p>
+    </header>
+
+    <main>
+        <section id="profil">
+            <h2>Tentang Saya</h2>
+            <img src="olahraga-1.webp" alt="Aktivitas Olahraga Mingguan" width="300">
+            <p>Halo, saya Aldo Alvero Pratama. Halaman ini digunakan untuk mencatat dan memantau target latihan olahraga mingguan saya.</p>
+        </section>
+
+        <section id="target-olahraga">
+            <h2>Target Olahraga Mingguan</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Jenis Olahraga</th>
+                        <th>Durasi (Menit)</th>
+                        <th>Target Kalori (kcal)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lari</td>
+                        <td>60</td>
+                        <td>550</td>
+                    </tr>
+                    <tr>
+                        <td>Gym</td>
+                        <td>90</td>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <td>Pingpong</td>
+                        <td>120</td>
+                        <td>450</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="form-latihan">
+            <h2>Pencatatan Latihan Baru</h2>
+            <form action="#" method="post">
+                <div>
+                    <label for="nama_olahraga">Nama Olahraga:</label><br>
+                    <input type="text" id="nama_olahraga" name="nama_olahraga" required>
+                </div>
+                <br>
+                <div>
+                    <label for="durasi">Durasi (Menit):</label><br>
+                    <input type="number" id="durasi" name="durasi" min="1" required>
+                </div>
+                <br>
+                <div>
+                    <label for="kalori">Kalori Terbakar (kcal):</label><br>
+                    <input type="number" id="kalori" name="kalori" min="1" required>
+                </div>
+                <br>
+                <div>
+                    <button type="submit">Simpan Latihan</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Aldo Alvero Pratama (25523229). All rights reserved.</p>
+    </footer>
+</body>
+</html>
