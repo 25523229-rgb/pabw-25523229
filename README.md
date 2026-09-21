@@ -7,4 +7,7 @@ pabw-25523229
 └── worksheet-p3/
 ├── profil.html
 └── olahraga-1.webp
+Pengungkapan AI
+#Pemeriksaan Struktur kdoe
+#Panduan Aksebilitas:Cara menjalankan audit Lighthouse Accessibility di DevTools
 
