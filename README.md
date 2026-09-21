@@ -8,6 +8,6 @@ pabw-25523229
 ├── profil.html
 └── olahraga-1.webp
 Pengungkapan AI
-#Pemeriksaan Struktur kdoe
+#Pemeriksaan Struktur kode
 #Panduan Aksebilitas:Cara menjalankan audit Lighthouse Accessibility di DevTools
 
