@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -28,17 +30,30 @@ body {
 h1 {
   font-size: var(--text-3xl);
   line-height: 1.15;
+  color: var(--color-fg);
 }
 
 h2 {
   font-size: var(--text-xl);
   line-height: 1.25;
+  color: var(--color-fg);
 }
 
 h3 {
   font-size: var(--text-md);
+  color: var(--color-fg);
 }
 
 main p {
   max-width: 60ch;
+  color: var(--color-fg);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+a:hover {
+  color: var(--color-primary);
 }
