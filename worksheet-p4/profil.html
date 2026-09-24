@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="tema.css" />
   </head>
   <body>
-    <header>
+    <header class="header-utama">
       <input type="checkbox" id="tema" class="pengalih-tema" />
       <label for="tema" class="tombol-tema">Tema gelap</label>
 
       <div class="header-baris">
         <h1>Jurnal & Target Olahraga Saya</h1>
-        <nav aria-label="Navigasi utama">
+        <nav class="navbar" aria-label="Navigasi utama">
           <ul>
             <li><a href="#jadwal">Jadwal Olahraga</a></li>
             <li><a href="#catat">Catat Latihan</a></li>
@@ -28,58 +28,66 @@
       </div>
     </header>
 
-    <main>
-      <section id="jadwal">
+    <main class="wadah-utama">
+      <section id="jadwal" class="bagian">
         <h2>Jadwal dan Target Olahraga</h2>
-        <table>
-          <caption>
-            Target Rutinitas Olahraga Mingguan
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">Hari</th>
-              <th scope="col">Jenis Olahraga</th>
-              <th scope="col">Durasi (menit)</th>
-              <th scope="col">Target Kalori (kcal)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Senin</th>
-              <td>Lari</td>
-              <td>60</td>
-              <td>550</td>
-            </tr>
-            <tr>
-              <th scope="row">Rabu</th>
-              <td>Gym</td>
-              <td>90</td>
-              <td>600</td>
-            </tr>
-            <tr>
-              <th scope="row">Sabtu</th>
-              <td>Pingpong</td>
-              <td>120</td>
-              <td>750</td>
-            </tr>
-          </tbody>
-        </table>
 
-        <figure id="galeri">
-          <img
-            src="olahraga-1.webp"
-            alt="Sepatu lari dan botol minum "
-            width="640"
-            height="360"
-            loading="lazy"
-          />
-          <figcaption>Perlengkapan sesi lari pagi.</figcaption>
-        </figure>
+        <div class="wadah-tabel">
+          <table class="tabel">
+            <caption>
+              Target Rutinitas Olahraga Mingguan
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Hari</th>
+                <th scope="col">Jenis Olahraga</th>
+                <th scope="col">Durasi (menit)</th>
+                <th scope="col">Target Kalori (kcal)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Senin</th>
+                <td>Lari</td>
+                <td>60</td>
+                <td>550</td>
+              </tr>
+              <tr>
+                <th scope="row">Rabu</th>
+                <td>Gym</td>
+                <td>90</td>
+                <td>600</td>
+              </tr>
+              <tr>
+                <th scope="row">Sabtu</th>
+                <td>Pingpong</td>
+                <td>120</td>
+                <td>750</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
-      <section id="catat">
+      <section id="galeri" class="bagian">
+        <h2>Dokumentasi</h2>
+        <div class="katalog-kartu">
+          <figure class="kartu">
+            <img
+              src="sepatu-botol.jpg"
+              alt="Sepatu lari dan botol minum di atas rumput"
+              loading="lazy"
+            />
+            <figcaption class="kartu-bodi">
+              Perlengkapan sesi lari pagi.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="catat" class="bagian">
         <h2>Catat Latihan Baru</h2>
-        <form action="/simpan" method="post">
+        <form action="/simpan" method="post" class="form-latihan">
           <div class="form-kolom">
             <label for="jenis-olahraga">Jenis Olahraga:</label>
             <input
@@ -121,7 +129,7 @@
       </section>
     </main>
 
-    <footer>
+    <footer class="footer-utama">
       <p>Aldo Alvero Pratama 25523229 2026</p>
     </footer>
   </body>
