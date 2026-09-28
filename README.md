@@ -30,3 +30,14 @@ Pengungkapan AI
 Kriteria selesai saya: mengubah --color-primary di satu baris harus mengubah warna tombol, tautan, judul, dan garis fokus.
 Pengungkapan AI
 #Membantu Pendalaman pemahaman teori dan konsep css
+ 
+ # Pertemuan 5 - Layout Modern:Flexbox dan Grid
+ Berkas yang dikerjakan:layout.css,Komponen.css,profil.html
+
+ 1.Kerangka Utama page : `grid-template-rows: auto 1fr auto;` | Membagi kerangka halaman menjadi 3 baris utuh agar footer selalu terdorong rapi ke bawah. 
+2.Tata Letak Isi .isi`grid-template-areas`  Menyusun penempatan area `.sisi` dan .utama secara presisi. 
+3.Galeri Adaptif (`.galeri`) `repeat(auto-fit, minmax(16rem, 1fr))` Membuat jumlah kolom kartu fleksibel menyesuaikan lebar layar secara otomatis. 
+Navigasi & Kartu  `display: flex;` & `gap`  Mengatur perataan elemen 1 dimensi dengan jarak antarkomponen yang konsisten. 
+Pencegahan Overflow`min-width: 0;` & `overflow-wrap: anywhere` mencegah teks panjang Memaksa wadah  agar tidak keluar di layar sempit (360 px). 
+Pengungkapan AI
+#membantu menganalisis penyebab bug overflow pada tampilan layar
