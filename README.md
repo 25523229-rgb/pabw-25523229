@@ -54,3 +54,26 @@ Viewport & Tata Letak Dasar (⁠ responsif.css ⁠) : ⁠ <meta name="view
 #Pengungkapan AI
 Membantu menganalisi penentuan titik henti,memvalidasi pengananan luberan(overflow)
 
+# Pertemuan 6 - JavaScript Modern ES6+, Struktur Data, dan Array Methods
+
+Penerapan kode di app.js
+Fungsi Murni
+   -Membuat fungsi `buatPerkenalan()` dan `formatKeahlian()` yang mengembalikan nilai (*return*) tanpa mengubah variabel di luar fungsi 
+. Pengolahan Array & Salinan Data
+   -Menggunakan (`{...objek}`, `[...array]`) untuk menyalin data agar *array* utama tidak mengalami penimpaan langsung.
+   -Memanfaatkan `map` untuk mengubah bentuk format data, `filter` untuk menyaring daftar proyek berdasarkan kategori, dan `find` untuk mencari satu item spesifik
+   -Menampilkan data struktur *array of objects* di Console menggunakan `console.table().
+
+ Penanganan `null` dan `undefined
+   -Menggunakan *Nullish Coalescing* (`??`) untuk memberikan nilai cadangan (*default value*) jika data bernilai `null` atau `undefined`.
+   -Menggunakan *Optional Chaining* (`?.`) saat mengakses properti hasil pencarian `.find()` agar tidak memicu galat/error di Console ketika data tidak ditemukan.
+Dikerjakan Mandiri
+  -Penyusunan data profil pribadi (identitas, daftar keahlian, dan daftar proyek)
+  -Pengujian kode secara lokal menggunakan Live Server dan pemeriksaan Console di peramban
+  -Pengunggahan berkas dan pengelolaan commit di Git/GitHub
+
+Dibantu AI
+-Membantu memahami alur pemecahan masalah (debugging)
+-Membantu Diskusi logika sintaks
+
+
