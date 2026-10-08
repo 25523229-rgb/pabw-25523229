@@ -55,4 +55,5 @@ const proyekTerurut = [...daftarProyek].sort((a, b) =>
 console.table(proyekTerurut);
 
 //P8 -- galat dibaca,bukan dihapus
+/P8 —- periksa, lalu simpan
 
