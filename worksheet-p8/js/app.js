@@ -27,22 +27,32 @@ const formatKeahlian = (daftar) => daftar.join(" · ");
 console.log(buatPerkenalan(profil));
 console.log(formatKeahlian(profil.keahlian));
 const daftarProyek = [
-  { judul: "Halaman Profil", tahun: 2026, selesai: true },
-  { judul: "Katalog Produk", tahun: 2026, selesai: false },
+  { judul: "Jurnal Lari", tahun: 2026, selesai: true },
+  { judul: "Jadwal Gym", tahun: 2026, selesai: true },
+  { judul: "Pingpong", tahun: 2026, selesai: false },
 ];
 
+// 1. Tampilan console.table 
 console.table(profil.keahlian);
 console.table(daftarProyek);
 
+// 2. filter pada satu label 
 const selesai = daftarProyek.filter((proyek) => proyek.selesai);
-
 console.table(selesai);
 
-const katalog = daftarProyek.find(
-  (proyek) => proyek.judul === "Katalog Produk"
-);
-
+// 3. find satu isi 
+const katalog = daftarProyek.find((proyek) => proyek.judul === "Pingpong");
 console.log(katalog);
+
+// 4. map pada daftarProyek mengambil daftar judul 
+const judulProyek = daftarProyek.map((proyek) => proyek.judul);
+console.log(judulProyek);
+
+// 5. Data asli setelah sort 
+const proyekTerurut = [...daftarProyek].sort((a, b) => 
+  a.judul.localeCompare(b.judul)
+);
+console.table(proyekTerurut);
 
 
 
