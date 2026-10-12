@@ -46,8 +46,13 @@ export function buatKartuProyek(proyek) {
 
 export function renderProyek(daftar) {
   wadahProyek.textContent = ""; 
+  if (daftar.length === 0) {
+    pesanKosong.hidden = false; 
+    return;
+  }
+  pesanKosong.hidden = true;
+
   daftar.forEach((proyek) => {
-    const kartu = buatKartuProyek(proyek);
-    wadahProyek.append(kartu); 
+    wadahProyek.append(buatKartuProyek(proyek));
   });
 }
