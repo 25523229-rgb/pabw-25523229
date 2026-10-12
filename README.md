@@ -54,7 +54,7 @@ Viewport & Tata Letak Dasar (⁠ responsif.css ⁠) : ⁠ <meta name="view
 #Pengungkapan AI
 Membantu menganalisi penentuan titik henti,memvalidasi pengananan luberan(overflow)
 
-# Pertemuan 6 - JavaScript Modern ES6+, Struktur Data, dan Array Methods
+# Pertemuan 8 - JavaScript Modern ES6+, Struktur Data, dan Array Methods
 
 Penerapan kode di app.js
 Fungsi Murni
@@ -77,3 +77,27 @@ Dibantu AI
 -Membantu Diskusi logika sintaks
 
 
+# Pertemuan 9 - DOM, Event, dan Interaktivitas
+
+1.Render Data Dinamis dari Array
+   -Menampilkan kartu proyek latihan secara otomatis dari struktur data array menggunakan `document.createElement()` dan `textContent`.
+   -Mencegah penumpukan/duplikasi kartu dengan pembersihan wadah galeri di awal fungsi *render*.
+   -Menampilkan pesan keadaan kosong  ketika kategori yang dipilih tidak memiliki data.
+
+2.Event Delegation pada Filter Kategori
+   -Menggunakan 1 *event listener* `click` pada elemen induk (`div#filter`) yang memanfaatkan `event.target.closest('button')` untuk mendeteksi tombol filter yang aktif.
+
+3.Validasi Formulir Interaktif
+   -Mencegah muat ulang halaman saat pengiriman formulir dengan `event.preventDefault()`.
+   -Menampilkan pesan galat langsung di bawah kolom yang belum terisi sesuai validasi real-time.
+
+   Pengungkapan AI
+-Memahami alur manipulasi DOM, teknik event delegation, dan pola fungsi render.
+-Mengidentifikasi galat sintaks HTML pada berkas profil.html.
+-Membantu struktur awal penulisan fungsi validasi form dan perbaikan galat null pada pemilih elemen (querySelector).
+
+Dikerjakan mandiri
+-Penelusuran pohon DOM dan pengujian pemilih elemen melalui DevTools Console.
+-Pembuatan elemen kartu dinamis berbasis data
+-Penerapan event delegation pada tombol penyaring (filter).
+-Penanganan validasi formulir dan pengujian fungsionalitas di peramban.
