@@ -1,5 +1,16 @@
-import { renderProyek, barisFilter } from "./dom.js";
-
+import {
+  renderProyek,
+  barisFilter,
+  formCatat,
+  inputJenis,
+  inputTanggal,
+  inputDurasi,
+  tombolKirim,
+  galatJenis,
+  galatTanggal,
+  galatDurasi,
+} from "./dom.js";
+  
 const nama = "Aldo Alvero Pratama";
 const jumlahProyek = 3;
 let pilihanAktif = "semua";
@@ -99,4 +110,106 @@ barisFilter.addEventListener("click", (event) => {
 
   tandaiTombolAktif(tombol);
   renderProyek(terpilih);
+});
+
+
+function periksaJenis() {
+  const nilai = inputJenis.value.trim(); // trim: spasi saja dianggap kosong
+  if (nilai === "") {
+    return "Jenis olahraga belum diisi. Tulis jenisnya, misalnya Lari atau Gym.";
+  }
+  if (nilai.length < 3) {
+    return "Jenis olahraga terlalu pendek. Tulis minimal 3 karakter.";
+  }
+  return "";
+}
+
+function periksaTanggal() {
+  if (inputTanggal.value === "") {
+    return "Tanggal latihan belum dipilih. Pilih tanggal latihan Anda.";
+  }
+  return "";
+}
+
+function periksaDurasi() {
+  const nilai = inputDurasi.value.trim();
+  if (nilai === "") {
+    return "Durasi belum diisi. Isi angka antara 1 sampai 300 menit.";
+  }
+  const angka = Number(nilai);
+  if (Number.isNaN(angka) || angka < 1 || angka > 300) {
+    return "Durasi di luar batas. Isi angka antara 1 sampai 300 menit.";
+  }
+  return "";
+}
+
+
+const daftarKolom = [
+  { input: inputJenis, galat: galatJenis, periksa: periksaJenis },
+  { input: inputTanggal, galat: galatTanggal, periksa: periksaTanggal },
+  { input: inputDurasi, galat: galatDurasi, periksa: periksaDurasi },
+];
+
+let sudahCoba = false; 
+
+
+function periksaKolom(kolom) {
+  const pesan = kolom.periksa();
+  kolom.galat.textContent = pesan;
+  if (pesan) {
+    kolom.input.setAttribute("aria-invalid", "true"); // tanda bagi pembaca layar
+  } else {
+    kolom.input.removeAttribute("aria-invalid");
+  }
+  return pesan === "";
+}
+
+
+formCatat.addEventListener("input", (event) => {
+  const kolom = daftarKolom.find((k) => k.input === event.target);
+  if (!kolom) return;
+
+  periksaKolom(kolom);
+
+  if (sudahCoba) {
+    const sah = daftarKolom.every((k) => k.periksa() === "");
+    tombolKirim.disabled = !sah; // tombol menunggu sampai seluruh kolom layak
+  }
+});
+
+formCatat.addEventListener("submit", (event) => {
+  event.preventDefault(); // baris pertama: halaman tidak dimuat ulang
+  sudahCoba = true;
+
+  let kolomBermasalah = null;
+  daftarKolom.forEach((kolom) => {
+    const layak = periksaKolom(kolom);
+    if (!layak && !kolomBermasalah) kolomBermasalah = kolom.input;
+  });
+
+  const sah = kolomBermasalah === null;
+  tombolKirim.disabled = !sah; 
+
+  if (!sah) {
+    kolomBermasalah.focus(); 
+    return;
+  }
+
+  console.log("Latihan tersimpan:", {
+    jenis: inputJenis.value.trim(),
+    tanggal: inputTanggal.value,
+    durasi: Number(inputDurasi.value),
+  });
+
+  formCatat.reset();
+});
+
+
+formCatat.addEventListener("reset", () => {
+  sudahCoba = false;
+  daftarKolom.forEach((kolom) => {
+    kolom.galat.textContent = "";
+    kolom.input.removeAttribute("aria-invalid");
+  });
+  tombolKirim.disabled = false;
 });
