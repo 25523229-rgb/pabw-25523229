@@ -91,15 +91,26 @@
           </section>
 
           <section id="galeri" class="bagian">
-            <h2>Dokumentasi</h2>
+            <h2>Dokumentasi & Proyek Latihan</h2>
+            
+            <div id="filter" style="margin-bottom: 1rem;">
+              <button type="button" data-kategori="semua" class="aktif">Semua</button>
+              <button type="button" data-kategori="selesai">Selesai</button>
+              <button type="button" data-kategori="belum">Belum Selesai</button>
+            </div>
 
-            <div class="galeri">
+            
+            <p id="pesan-kosong" hidden>Tidak ada latihan pada kategori ini.</p>
+
+      
+            <div class="galeri" id="daftar-proyek">
               <figure class="kartu sorotan">
                 <img
                   src="sepatu-botol.jpg"
                   alt="Sepatu lari dan botol minum"
                   loading="lazy"
                 />
+
 
                 <div class="kartu__isi">
                   <h3 class="kartu__judul">Perlengkapan Sesi Lari Pagi</h3>
@@ -195,5 +206,6 @@
       </footer>
     </div>
     <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/dom.js"></script>
   </body>
 </html>
