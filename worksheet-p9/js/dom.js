@@ -7,6 +7,11 @@ export const inputJenis = document.querySelector("#jenis-olahraga");
 export const inputTanggal = document.querySelector("#tanggal-latihan");
 export const inputDurasi = document.querySelector("#durasi-latihan");
 
+export const tombolKirim = document.querySelector("#tombol-kirim");
+export const galatJenis = document.querySelector("#galat-jenis");
+export const galatTanggal = document.querySelector("#galat-tanggal");
+export const galatDurasi = document.querySelector("#galat-durasi");
+
 export function buatKartuProyek(proyek) {
   const kartu = document.createElement("figure");
   kartu.className = proyek.sorotan ? "kartu sorotan" : "kartu";
