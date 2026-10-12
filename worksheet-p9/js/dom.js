@@ -1,5 +1,3 @@
-import { daftarProyek } from "./app.js";
-
 export const wadahProyek = document.querySelector("#daftar-proyek");
 export const barisFilter = document.querySelector("#filter");
 export const pesanKosong = document.querySelector("#pesan-kosong");
