@@ -1,6 +1,7 @@
 export const wadahProyek = document.querySelector("#daftar-proyek");
 export const barisFilter = document.querySelector("#filter");
 export const pesanKosong = document.querySelector("#pesan-kosong");
+export const pesanMuat = document.querySelector("#muat");   
 export const formCatat = document.querySelector("#catat form");
 
 export const inputJenis = document.querySelector("#jenis-olahraga");
@@ -12,6 +13,7 @@ export const tombolKirim = formCatat.querySelector('button[type="submit"]');
 export const galatJenis = inputJenis.parentElement.querySelector(".pesan-galat");
 export const galatTanggal = inputTanggal.parentElement.querySelector(".pesan-galat");
 export const galatDurasi = inputDurasi.parentElement.querySelector(".pesan-galat");
+
 export function buatKartuProyek(proyek) {
   const kartu = document.createElement("figure");
   kartu.className = proyek.sorotan ? "kartu sorotan" : "kartu";
@@ -49,10 +51,12 @@ export function buatKartuProyek(proyek) {
   return kartu;
 }
 
-export function renderProyek(daftar) {
+export function render(daftar, pesan = "Belum ada data.") {
   wadahProyek.textContent = ""; 
   if (daftar.length === 0) {
-    pesanKosong.hidden = false; 
+
+    pesanKosong.textContent = pesan;
+    pesanKosong.hidden = false;
     return;
   }
   pesanKosong.hidden = true;
@@ -62,8 +66,35 @@ export function renderProyek(daftar) {
     wadahProyek.append(buatKartuProyek(proyek));
   });
 }
+export function aturMemuat(aktif) {
+  pesanMuat.hidden = !aktif;
+}
 export function tampilkanGalat(pesan) {
   wadahProyek.textContent = "";
   pesanKosong.textContent = pesan;   
   pesanKosong.hidden = false;
+}
+function tandaiTombolAktif(tombolAktif) {
+  document.querySelectorAll("#filter button").forEach((tombol) => {
+    tombol.classList.toggle("aktif", tombol === tombolAktif);
+  });
+}
+
+export function pasangFilter(daftar) {
+  barisFilter.addEventListener("click", (event) => {
+    const tombol = event.target.closest("button");
+    if (!tombol) return;
+
+    const kategori = tombol.dataset.kategori;
+
+    const terpilih = daftar.filter((proyek) => {
+      if (kategori === "semua") return true;
+      if (kategori === "selesai") return proyek.selesai === true;
+      if (kategori === "belum") return proyek.selesai === false;
+      return proyek.kategori.toLowerCase() === kategori.toLowerCase();
+    });
+
+  tandaiTombolAktif(tombol);
+    render(terpilih, "Tidak ada latihan pada kategori ini.");
+  });
 }

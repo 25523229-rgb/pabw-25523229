@@ -1,7 +1,9 @@
 import { ambilProyek } from "./api.js";
 import {
-  renderProyek,
-  barisFilter,
+  render,
+  pasangFilter,
+  aturMemuat,
+  tampilkanGalat,
   formCatat,
   inputJenis,
   inputTanggal,
@@ -10,7 +12,6 @@ import {
   galatJenis,
   galatTanggal,
   galatDurasi,
-  tampilkanGalat,
 } from "./dom.js";
   
 const nama = "Aldo Alvero Pratama";
@@ -38,82 +39,7 @@ const formatKeahlian = (daftar) => daftar.join(" · ");
 
 console.log(buatPerkenalan(profil));
 console.log(formatKeahlian(profil.keahlian));
-
-export const daftarProyek = [
-  {
-    judul: "Jurnal Lari",
-    deskripsi: "Sepatu lari dan botol minum.",
-    gambar: "sepatu-botol.jpg", 
-    kategori: "Lari",
-    sorotan: true,
-    tahun: 2026,
-    selesai: true,
-  },
-  {
-    judul: "Jadwal Gym",
-    deskripsi: "Latihan kekuatan tubuh.",
-    gambar: "Latihan Beban.jpg", 
-    kategori: "Gym",
-    sorotan: false,
-    tahun: 2026,
-    selesai: true,
-  },
-  {
-    judul: "Pingpong",
-    deskripsi: "Latihan kelincahan dan refleks.",
-    gambar: "pingpong.jpg", 
-    kategori: "Pingpong",
-    sorotan: false,
-    tahun: 2026,
-    selesai: false,
-  },
-];
-
 console.table(profil.keahlian);
-console.table(daftarProyek);
-
-const selesai = daftarProyek.filter((proyek) => proyek.selesai);
-console.table(selesai);
-
-const katalog = daftarProyek.find((proyek) => proyek.judul === "Pingpong");
-console.log(katalog);
-
-const judulProyek = daftarProyek.map((proyek) => proyek.judul);
-console.log(judulProyek);
-
-const proyekTerurut = [...daftarProyek].sort((a, b) => 
-  a.judul.localeCompare(b.judul)
-);
-console.table(proyekTerurut);
-
-
-renderProyek(daftarProyek);
-
-
-function tandaiTombolAktif(tombolAktif) {
-  document.querySelectorAll("#filter button").forEach((tombol) => {
-    tombol.classList.toggle("aktif", tombol === tombolAktif);
-  });
-}
-
-
-barisFilter.addEventListener("click", (event) => {
-  const tombol = event.target.closest("button");
-  if (!tombol) return;
-
-  const kategori = tombol.dataset.kategori;
-
-  const terpilih = daftarProyek.filter((proyek) => {
-    if (kategori === "semua") return true;
-    if (kategori === "selesai") return proyek.selesai === true;
-    if (kategori === "belum") return proyek.selesai === false;
-    return proyek.kategori.toLowerCase() === kategori.toLowerCase();
-  });
-
-  tandaiTombolAktif(tombol);
-  renderProyek(terpilih);
-});
-
 
 function periksaJenis() {
   const nilai = inputJenis.value.trim(); // trim: spasi saja dianggap kosong
@@ -145,27 +71,24 @@ function periksaDurasi() {
   return "";
 }
 
-
 const daftarKolom = [
   { input: inputJenis, galat: galatJenis, periksa: periksaJenis },
   { input: inputTanggal, galat: galatTanggal, periksa: periksaTanggal },
   { input: inputDurasi, galat: galatDurasi, periksa: periksaDurasi },
 ];
 
-let sudahCoba = false; 
-
+let sudahCoba = false;
 
 function periksaKolom(kolom) {
   const pesan = kolom.periksa();
   kolom.galat.textContent = pesan;
   if (pesan) {
-    kolom.input.setAttribute("aria-invalid", "true"); // tanda bagi pembaca layar
+    kolom.input.setAttribute("aria-invalid", "true"); 
   } else {
     kolom.input.removeAttribute("aria-invalid");
   }
   return pesan === "";
 }
-
 
 formCatat.addEventListener("input", (event) => {
   const kolom = daftarKolom.find((k) => k.input === event.target);
@@ -175,12 +98,12 @@ formCatat.addEventListener("input", (event) => {
 
   if (sudahCoba) {
     const sah = daftarKolom.every((k) => k.periksa() === "");
-    tombolKirim.disabled = !sah; // tombol menunggu sampai seluruh kolom layak
+    tombolKirim.disabled = !sah; 
   }
 });
 
 formCatat.addEventListener("submit", (event) => {
-  event.preventDefault(); // baris pertama: halaman tidak dimuat ulang
+  event.preventDefault(); 
   sudahCoba = true;
 
   let kolomBermasalah = null;
@@ -190,22 +113,24 @@ formCatat.addEventListener("submit", (event) => {
   });
 
   const sah = kolomBermasalah === null;
-  tombolKirim.disabled = !sah; 
+  tombolKirim.disabled = !sah;
 
   if (!sah) {
-    kolomBermasalah.focus(); 
+    kolomBermasalah.focus();
     return;
   }
 
-  console.log("Latihan tersimpan:", {
+ an
+  const badan = JSON.stringify({
     jenis: inputJenis.value.trim(),
     tanggal: inputTanggal.value,
     durasi: Number(inputDurasi.value),
   });
+  console.log(typeof badan); // string
+  console.log("Latihan tersimpan:", badan);
 
   formCatat.reset();
 });
-
 
 formCatat.addEventListener("reset", () => {
   sudahCoba = false;
@@ -216,17 +141,22 @@ formCatat.addEventListener("reset", () => {
   tombolKirim.disabled = false;
 });
 
-// sementara, diganti perakit muat() di lembar D
-async function muatSementara() {
+
+async function muat() {
+  aturMemuat(true); // keadaan memuat
   try {
-    const daftar = await ambilProyek();
-    console.log(daftar);
-    console.log(daftar[0].judul);
-    const badan = JSON.stringify({ judul: "Judul contoh", kategori: "web" });
-    console.log(typeof badan);
+    const daftar = await ambilProyek(); 
+    pasangFilter(daftar); 
+    render(daftar); 
   } catch (galat) {
-    tampilkanGalat("Data gagal dimuat. Periksa koneksi, lalu muat ulang halaman.");
-    console.error(galat.message); 
+    tampilkanGalat("Data gagal dimuat. Periksa koneksi, lalu muat ulang halaman."); // keadaan gagal
+    console.error(galat.message);
+  } finally {
+    aturMemuat(false); 
   }
 }
-muatSementara();
+
+muat(); 
+
+
+
