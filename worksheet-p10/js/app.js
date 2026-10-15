@@ -159,4 +159,8 @@ async function muat() {
 muat(); 
 
 
+document.addEventListener("click",async function () {
+  const data = await ambilProyek();
+});
+
 
