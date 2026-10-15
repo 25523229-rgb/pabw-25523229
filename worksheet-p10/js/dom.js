@@ -57,7 +57,13 @@ export function renderProyek(daftar) {
   }
   pesanKosong.hidden = true;
 
+
   daftar.forEach((proyek) => {
     wadahProyek.append(buatKartuProyek(proyek));
   });
+}
+export function tampilkanGalat(pesan) {
+  wadahProyek.textContent = "";
+  pesanKosong.textContent = pesan;   
+  pesanKosong.hidden = false;
 }

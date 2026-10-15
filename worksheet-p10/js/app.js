@@ -10,6 +10,7 @@ import {
   galatJenis,
   galatTanggal,
   galatDurasi,
+  tampilkanGalat,
 } from "./dom.js";
   
 const nama = "Aldo Alvero Pratama";
@@ -216,4 +217,13 @@ formCatat.addEventListener("reset", () => {
 });
 
 // sementara, diganti perakit muat() di lembar D
-ambilProyek().then((daftar) => console.log(daftar));
+async function muatSementara() {
+  try {
+    const daftar = await ambilProyek();
+    console.log(daftar);
+  } catch (galat) {
+    tampilkanGalat("Data gagal dimuat. Periksa koneksi, lalu muat ulang halaman.");
+    console.error(galat.message);   
+  }
+}
+muatSementara();
