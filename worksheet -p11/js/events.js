@@ -1,5 +1,11 @@
-import { state, pilihKategori, aturSudahCoba } from "./state.js";
 import {
+  state,
+  pilihKategori,
+  tambahFavorit,
+  aturSudahCoba,
+} from "./state.js";
+import {
+  wadahProyek,
   barisFilter,
   formCatat,
   daftarKolom,
@@ -16,6 +22,12 @@ export function pasangPendengar() {
     const tombol = event.target.closest("button");
     if (!tombol) return;
     pilihKategori(tombol.dataset.kategori);
+  });
+
+  wadahProyek.addEventListener("click", (event) => {
+    const tombol = event.target.closest(".favorit");
+    if (!tombol) return;
+    tambahFavorit(Number(tombol.dataset.id));
   });
 
   formCatat.addEventListener("input", (event) => {

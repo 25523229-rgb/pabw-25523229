@@ -1,5 +1,5 @@
 import { ambilProyek } from "./api.js";
-import { isiProyek } from "./state.js";
+import { isiProyek,  } from "./state.js";
 import { tampilkanGalat, aturMemuat } from "./dom.js";
 import { pasangPendengar } from "./events.js";
 

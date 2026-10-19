@@ -1,6 +1,6 @@
 import { saring, periksaJenis, periksaTanggal, periksaDurasi } from "./data.js";
 
-const wadahProyek = document.querySelector("#daftar-proyek");
+export const wadahProyek = document.querySelector("#daftar-proyek");
 const pesanKosong = document.querySelector("#pesan-kosong");
 const pesanMuat = document.querySelector("#muat");
 
@@ -30,7 +30,7 @@ export const daftarKolom = [
   },
 ];
 
-function buatKartuProyek(proyek) {
+function buatKartuProyek(proyek, favorit) {
   const kartu = document.createElement("figure");
   kartu.className = proyek.sorotan ? "kartu sorotan" : "kartu";
 
@@ -56,11 +56,17 @@ function buatKartuProyek(proyek) {
   lencana.className = "lencana";
   lencana.textContent = proyek.kategori;
 
+  const tombolFavorit = document.createElement("button");
+  tombolFavorit.type = "button";
+  tombolFavorit.className = "favorit";
+  tombolFavorit.dataset.id = proyek.id;
+  tombolFavorit.textContent = favorit.includes(proyek.id) ? "★" : "☆";
+
   const tombol = document.createElement("button");
   tombol.type = "button";
   tombol.textContent = "Detail";
 
-  kaki.append(lencana, tombol);
+  kaki.append(lencana, tombolFavorit, tombol);
   isi.append(judul, deskripsi, kaki);
   kartu.append(img, isi);
   return kartu;
@@ -84,7 +90,9 @@ export function render(state) {
   }
   pesanKosong.hidden = true;
 
-  tampil.forEach((proyek) => wadahProyek.append(buatKartuProyek(proyek)));
+  tampil.forEach((proyek) =>
+    wadahProyek.append(buatKartuProyek(proyek, state.favorit)),
+  );
 }
 
 export function aturMemuat(aktif) {
