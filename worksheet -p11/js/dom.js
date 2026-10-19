@@ -3,6 +3,7 @@ import { saring, periksaJenis, periksaTanggal, periksaDurasi } from "./data.js";
 export const wadahProyek = document.querySelector("#daftar-proyek");
 const pesanKosong = document.querySelector("#pesan-kosong");
 const pesanMuat = document.querySelector("#muat");
+export const tombolAturUlang = document.querySelector("#atur-ulang");
 
 export const barisFilter = document.querySelector("#filter");
 export const formCatat = document.querySelector("#catat form");

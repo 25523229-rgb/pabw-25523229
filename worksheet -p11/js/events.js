@@ -3,10 +3,12 @@ import {
   pilihKategori,
   tambahFavorit,
   aturSudahCoba,
+  aturUlang,
 } from "./state.js";
 import {
   wadahProyek,
   barisFilter,
+  tombolAturUlang,
   formCatat,
   daftarKolom,
   periksaKolom,
@@ -18,6 +20,9 @@ import {
 } from "./dom.js";
 
 export function pasangPendengar() {
+tombolAturUlang.addEventListener("click", () => {
+aturUlang();
+});
   barisFilter.addEventListener("click", (event) => {
     const tombol = event.target.closest("button");
     if (!tombol) return;
