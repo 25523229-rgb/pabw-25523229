@@ -101,3 +101,49 @@ Dikerjakan mandiri
 -Pembuatan elemen kartu dinamis berbasis data
 -Penerapan event delegation pada tombol penyaring (filter).
 -Penanganan validasi formulir dan pengujian fungsionalitas di peramban.
+
+# Pertemuan 10 JavaScript Asinkron: fetch, Promise, dan JSON
+Pengambilan Data Asinkron & Pemisahan Lapisan (Modularization)
+Membuat berkas js/api.js untuk mengisolasi pemanggilan fetch() dan mengelola variabel ALAMAT di satu tempat ( URL Raw GitHub).   
+
+Memeriksa status HTTP melalui respons.ok sebelum membaca balasan respons.json() untuk mencegah dibacanya halaman galat HTML sebagai data.   
+
+Mengekspor fungsi ambilProyek() agar js/app.js dapat merakit aplikasi tanpa memanggil fetch() secara langsung.   
+
+Penanganan 4 Keadaan Antarmuka (UI States)
+   
+
+Memuat: Mengontrol indikator #muat melalui fungsi aturMemuat(true/false) di blok try...catch...finally.   
+
+Berhasil: Merender daftar kartu proyek latihan ke dalam wadah #daftar-proyek melalui fungsi render() dan buatKartuProyek().   
+
+Gagal: Menangkap galat jaringan  lalu menampilkan pesan galat ke antarmuka via tampilkanGalat().   
+
+Kosong: Memeriksa daftar.length === 0 untuk menampilkan elemen #pesan-kosong saat data bernilai larik kosong.   
+
+Pengolahan JSON Dua Arah & Validasi Formulir
+   
+
+Mengonversi teks balasan jaringan menjadi objek JavaScript menggunakan await respons.json().   
+
+Mengonversi objek data dari formulir catat menjadi teks JSON menggunakan JSON.stringify() saat pengiriman data.
+
+
+
+
+
+
+
+
+Pengunkapan AI
+1 pemahaman alur kerja async/await, penanganan galat try/catch, dan pemeriksaan respons.ok pada fetch().   
+
+2.Menganalisis pesan galat sintaks SyntaxError / Unexpected reserved word saat pengujian pemanggilan await
+Pengerjaan Mandiri
+1.Penulisan struktur HTML profil.html dan penataan CSS untuk topik Jurnal & Target Olahraga Saya.   
+HTML
+2.Pengelolaan Data JSON: Penyusunan struktur data proyek pada berkas data/proyek.json.   
+JSON
+3.Pengujian Antarmuka: Pengujian langsung empat keadaan UI (memuat, berhasil, gagal, kosong) di peramban dan DevTools.   
+
+Manajemen Repositori: Eksekusi perintah Git (add, commit, push) dan pengelolaan repositori GitHub.
