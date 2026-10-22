@@ -147,3 +147,20 @@ JSON
 3.Pengujian Antarmuka: Pengujian langsung empat keadaan UI (memuat, berhasil, gagal, kosong) di peramban dan DevTools.   
 
 Manajemen Repositori: Eksekusi perintah Git (add, commit, push) dan pengelolaan repositori GitHub.
+
+
+# Pertemuan 11 Modul state dan penyimpanan klien
+ 
+ #Pengerjaan Mandiri
+-Penulisan Kode Modul: Memecah berkas JavaScript lama dari Pertemuan 10 ke dalam 5 modul terpisah tanpa menambah logika di app.js.   
+-Penyesuaian HTML: Menambahkan tombol "Atur ulang" (#atur-ulang) dan menyisipkan tag <link rel="icon"> di dalam elemen <head> pada profil.html.   
+-Pengujian DevTools: Melakukan pengujian perubahan state (filter & favorit), memeriksa ketahanan data saat reload, dan menjalankan data di Console.   
+-Pengelolaan Git: Mengeksekusi perintah Git (add, commit, push, pull, stash) hingga repositori lokal dan GitHub sinkron.
+
+#Pengungkapan AI
+-Penyimpanan Klien & Uji Kerusakan: Memahami mekanisme localStorage (JSON.stringify/JSON.parse), logika pemeriksaan nomor versi skema, serta penanganan simpanan rusak via try catch
+-Membantu memahami pemisahan kode
+
+Node.js
+-node -v : v24 22.0
+-npm  -v : 11.19.1
