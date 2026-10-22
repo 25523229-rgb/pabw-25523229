@@ -164,3 +164,29 @@ Manajemen Repositori: Eksekusi perintah Git (add, commit, push) dan pengelolaan 
 Node.js
 -node -v : v24 22.0
 -npm  -v : 11.19.1
+
+# Pertemuan 11 Build Tooling dan Framework SPA
+
+Halaman profil dan jurnal olahraga pribadi. Proyek ini adalah hasil memindahkan halaman Pertemuan 11
+
+Jumlah berkas turun karena CSS, modul JavaScript, dan komponen digabung menjadi satu berkas .js dan satu .css. Ukuran total tetap besar karena tiga gambar .jpg di public/ disalin apa adanya dan tidak diperkecil oleh build.
+
+Yang tidak disimpan di repositori
+
+node_modules/ dan dist/ tidak ikut disimpan karena bisa dibuat ulang dengan npm install dan npm run build. package-lock.json sengaja disimpan untuk mengunci versi paket.
+
+Yang dikerjakan sendiri
+-Pemasangan awal kerangka proyek Vite Vue di folder worksheet-p12/.
+
+-Pemindahan aset CSS (tokens.css, layout.css, komponen.css, dll.) ke dalam src/ dan pengimporannya di main.js.
+
+-Pemisahan markup HTML P11 menjadi struktur 4 komponen Vue (KepalaProfil, TombolFilter, DaftarProyek, FormKontak).
+
+-Pengujian fungsionalitas localStorage, tombol filter, dan aksi favorit di peramban.
+
+-Eksekusi perintah build, preview, serta perbandingan network payload di DevTools.
+
+Yang dibantu AI
+Refactoring sintaks penulisan watch() reaktif Vue 3 dengan opsi (deep: true )untuk memantau perubahan objek state kompleks.
+
+Pengecekan ulang keterhubungan onMounted dengan penanganan async/await saat memanggil API data JSON.
