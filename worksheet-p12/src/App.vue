@@ -1,23 +1,29 @@
 
+<script setup>
+import { onMounted } from 'vue'
+import { profil } from './data.js'
+import { state, isiProyek, pulihkan, muat } from './state.js'
+import { ambilProyek } from './api.js'
+import KepalaProfil from './components/KepalaProfil.vue'
+import TombolFilter from './components/TombolFilter.vue'
+import DaftarProyek from './components/DaftarProyek.vue'
+import FormKontak from './components/FormKontak.vue'
+
+onMounted(async () => {
+  pulihkan(muat())
+  try {
+    isiProyek(await ambilProyek())
+  } catch (galat) {
+    state.galat = 'Data gagal dimuat. Periksa koneksi, lalu muat ulang.'
+  } finally {
+    state.memuat = false
+  }
+})
+</script>
+
 <template>
   <div class="page">
-    <header>
-      <div class="baris-pengalih">
-        <input type="checkbox" id="tema" class="pengalih-tema" />
-        <label for="tema" class="tombol-tema">Tema gelap</label>
-      </div>
-
-      <div class="header-baris navbar">
-        <h1>Jurnal Olahraga</h1>
-        <nav aria-label="Navigasi utama">
-          <ul>
-            <li><a href="#jadwal">Jadwal</a></li>
-            <li><a href="#galeri">Dokumentasi</a></li>
-            <li><a href="#catat">Catat Latihan</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <KepalaProfil :profil="profil" />
 
     <main class="isi">
       <aside class="sisi">
@@ -77,66 +83,13 @@
 
         <section id="galeri" class="bagian">
           <h2>Dokumentasi &amp; Proyek Latihan</h2>
-
-          <div id="filter" style="margin-bottom: 1rem;">
-            <button type="button" data-kategori="semua" class="aktif">Semua</button>
-            <button type="button" data-kategori="lari">Lari</button>
-            <button type="button" data-kategori="gym">Gym</button>
-            <button type="button" data-kategori="pingpong">Pingpong</button>
-            <button type="button" data-kategori="renang">Renang</button>
-          </div>
-          <button type="button" id="atur-ulang">Atur ulang</button>
-
-          <p id="muat" hidden>Memuat data...</p>
-          <p id="pesan-kosong" hidden>Tidak ada latihan pada kategori ini.</p>
-
-          <div class="galeri" id="daftar-proyek"></div>
+          <TombolFilter />
+          <DaftarProyek />
         </section>
 
         <section id="catat" class="bagian">
           <h2>Catat Latihan Baru</h2>
-          <form action="/simpan" method="post">
-            <div class="form-kolom">
-              <label for="jenis-olahraga">Jenis Olahraga:</label>
-              <input
-                type="text"
-                id="jenis-olahraga"
-                name="jenis-olahraga"
-                required
-                minlength="3"
-              />
-              <span class="pesan-galat">Jenis olahraga minimal 3 karakter.</span>
-            </div>
-
-            <div class="form-kolom">
-              <label for="tanggal-latihan">Tanggal Latihan:</label>
-              <input
-                type="date"
-                id="tanggal-latihan"
-                name="tanggal-latihan"
-                required
-              />
-              <span class="pesan-galat">Tanggal latihan wajib diisi.</span>
-            </div>
-
-            <div class="form-kolom">
-              <label for="durasi-latihan">Durasi (menit):</label>
-              <input
-                type="number"
-                id="durasi-latihan"
-                name="durasi-latihan"
-                min="1"
-                max="300"
-                required
-              />
-              <span class="pesan-galat">Durasi wajib antara 1-300 menit.</span>
-            </div>
-
-            <div class="baris-tombol">
-              <button type="submit">Simpan Latihan</button>
-              <button type="reset" class="tombol-sekunder">Batal</button>
-            </div>
-          </form>
+          <FormKontak />
         </section>
       </div>
     </main>

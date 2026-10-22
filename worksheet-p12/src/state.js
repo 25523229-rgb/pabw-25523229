@@ -1,25 +1,38 @@
-import { render } from "./dom.js";
+import { reactive } from "vue";
 
 const KUNCI = "pabw-p11";
 const VERSI = 2;
 
-export const state = {
+export const state = reactive({
   daftarProyek: [],
   kategoriAktif: "semua",
   favorit: [],
   sudahCoba: false,
-};
+  memuat: true,
+  galat: "",
+});
+
+export function simpan(nilai) {
+  localStorage.setItem(
+    KUNCI,
+    JSON.stringify({
+      versi: VERSI,
+      kategoriAktif: nilai.kategoriAktif,
+      favorit: nilai.favorit,
+    }),
+  );
+}
 
 export function muat() {
   try {
     const isi = JSON.parse(localStorage.getItem(KUNCI));
     if (isi?.versi !== VERSI) {
-      localStorage.removeItem(KUNCI); // bentuk lama: buang
+      localStorage.removeItem(KUNCI);
       return null;
     }
     return isi;
   } catch {
-    localStorage.removeItem(KUNCI); // isi rusak: buang
+    localStorage.removeItem(KUNCI);
     return null;
   }
 }
@@ -34,28 +47,21 @@ export function aturUlang() {
   localStorage.removeItem(KUNCI);
   state.kategoriAktif = "semua";
   state.favorit = [];
-  render(state);
 }
 
 export function isiProyek(daftar) {
   state.daftarProyek = daftar;
-  render(state);
 }
 
 export function pilihKategori(kategori) {
   state.kategoriAktif = kategori;
-  simpan(state);
-  render(state);
 }
 
 export function tambahFavorit(id) {
   if (state.favorit.includes(id)) return;
   state.favorit = [...state.favorit, id];
-  simpan(state);
-  render(state);
 }
 
 export function aturSudahCoba(nilai) {
   state.sudahCoba = nilai;
 }
-
